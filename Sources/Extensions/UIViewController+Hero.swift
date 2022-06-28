@@ -30,7 +30,7 @@ internal class HeroViewControllerConfig: NSObject {
   var tabBarAnimation: HeroDefaultAnimationType = .auto
 
   var storedSnapshot: UIView?
-  weak var previousNavigationDelegate: UINavigationControllerDelegate?
+//  weak var previousNavigationDelegate: UINavigationControllerDelegate?
   weak var previousTabBarDelegate: UITabBarControllerDelegate?
 }
 
@@ -77,7 +77,7 @@ public extension HeroExtension where Base: UIViewController {
       if newValue {
         base.transitioningDelegate = Hero.shared
         if let navi = base as? UINavigationController {
-          base.previousNavigationDelegate = navi.delegate
+//          base.previousNavigationDelegate = navi.delegate
           navi.delegate = Hero.shared
         }
         if let tab = base as? UITabBarController {
@@ -87,7 +87,7 @@ public extension HeroExtension where Base: UIViewController {
       } else {
         base.transitioningDelegate = nil
         if let navi = base as? UINavigationController, navi.delegate is HeroTransition {
-          navi.delegate = base.previousNavigationDelegate
+//          navi.delegate = base.previousNavigationDelegate
         }
         if let tab = base as? UITabBarController, tab.delegate is HeroTransition {
           tab.delegate = base.previousTabBarDelegate
@@ -108,10 +108,10 @@ public extension UIViewController {
     set { hero.config = newValue }
   }
 
-  internal var previousNavigationDelegate: UINavigationControllerDelegate? {
-    get { return hero.config.previousNavigationDelegate }
-    set { hero.config.previousNavigationDelegate = newValue }
-  }
+//  internal var previousNavigationDelegate: UINavigationControllerDelegate? {
+//    get { return hero.config.previousNavigationDelegate }
+//    set { hero.config.previousNavigationDelegate = newValue }
+//  }
 
   internal var previousTabBarDelegate: UITabBarControllerDelegate? {
     get { return hero.config.previousTabBarDelegate }
